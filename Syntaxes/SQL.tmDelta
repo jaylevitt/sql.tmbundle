@@ -11,6 +11,12 @@
 				<string>#comments</string>
 			</dict>
 			<dict>
+				<key>match</key>
+				<string>(?i)(\b(as\s+\$[^\$]*\$)|(^|\s+)\$[^\$]*\$(\s+(language|plpgsql|stable|immutable|strict))+)</string>
+				<key>name</key>
+				<string>keyword.other.directive.sql</string>
+			</dict>
+			<dict>
 				<key>captures</key>
 				<dict>
 					<key>1</key>
@@ -112,7 +118,7 @@
 					<key>10</key>
 					<dict>
 						<key>name</key>
-						<string>constant.numeric.sql</string>
+						<string>storage.type.sql</string>
 					</dict>
 					<key>11</key>
 					<dict>
@@ -122,19 +128,9 @@
 					<key>12</key>
 					<dict>
 						<key>name</key>
-						<string>storage.type.sql</string>
-					</dict>
-					<key>13</key>
-					<dict>
-						<key>name</key>
-						<string>storage.type.sql</string>
-					</dict>
-					<key>14</key>
-					<dict>
-						<key>name</key>
 						<string>constant.numeric.sql</string>
 					</dict>
-					<key>15</key>
+					<key>13</key>
 					<dict>
 						<key>name</key>
 						<string>storage.type.sql</string>
@@ -162,12 +158,12 @@
 					<key>6</key>
 					<dict>
 						<key>name</key>
-						<string>storage.type.sql</string>
+						<string>constant.numeric.sql</string>
 					</dict>
 					<key>7</key>
 					<dict>
 						<key>name</key>
-						<string>constant.numeric.sql</string>
+						<string>storage.type.sql</string>
 					</dict>
 					<key>8</key>
 					<dict>
@@ -187,18 +183,20 @@
 				 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|float|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text|record|hstore)\b
 
 				# numeric suffix, capture 2 + 3i
-				|\b(bit\svarying|char(acter)?\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
+				|\b(bit\svarying|char(acter)?\s(?:varying)?|tinyint|varchar|float|interval)\((\d+)\)
 
 				# optional numeric suffix, capture 4 + 5i
-				|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
+				# I dont get this; is it part of the sql standard? varchar3(2)? Its not Postgres.
+				# |\b(char|number|varchar\d?)\b(?:\((\d+)\))?
+				# captures below are renumbered since I commented out 4 and 5
 
-				# special case, capture 6 + 7i + 8i
+				# special case, capture 4 + 5i + 6i
 				|\b(numeric)\b(?:\((\d+),(\d+)\))?
 
-				# special case, captures 9, 10i, 11
+				# special case, captures 7, 8i, 9
 				|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
 
-				# special case, captures 12, 13, 14i, 15
+				# special case, captures 10, 11, 12i, 13
 				|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
 
 			</string>
@@ -340,15 +338,9 @@
 			</dict>
 			<dict>
 				<key>match</key>
-				<string>(?i)\b(if|elsif|else|end(\s+(if|loop|case))?|loop|for|case|continue|returns|declare|return(\s+(next|query(\s+execute)?)?)?|goto)\b</string>
+				<string>(?i)\b(if|then|elsif|else|end(\s+(if|loop|case))?|loop|for|case|continue|returns|declare|return(\s+(next|query(\s+execute)?)?)?|goto)\b</string>
 				<key>name</key>
 				<string>keyword.control.sql</string>
-			</dict>
-			<dict>
-				<key>match</key>
-				<string>(?i)(\b(as\s+\$[^\$]*\$)|(^|\s+)\$[^\$]*\$(\s+(language|plpgsql|stable|strict))+)</string>
-				<key>name</key>
-				<string>keyword.other.directive.sql</string>
 			</dict>
 			<dict>
 				<key>include</key>
