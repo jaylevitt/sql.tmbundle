@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>settings.decreaseIndentPattern</key>
+		<string>\)(?!=.*\()|(?i)^\s*(is|as|begin|end|then|else|elsif|exception|\$\$)\b</string>
+		<key>settings.increaseIndentPattern</key>
+		<string>(?i)^\s*(is|as|begin|if|then|else|elsif|loop|exception|declare|returns|create|grant|insert|delete|update)\b|\((?!.*\))</string>
+	</dict>
+	<key>deleted</key>
+	<array/>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>9C3A0A63-E661-4B0B-855B-710EDBBDB00F</string>
+</dict>
+</plist>
